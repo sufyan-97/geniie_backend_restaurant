@@ -1,0 +1,65 @@
+// import "google/protobuf/any.proto";
+
+syntax = "proto3";
+
+service BillingService {
+	rpc ServiceTransaction (ServiceTransactionRequest) returns (ServiceTransactionResponse);
+	rpc GetPaymentMethods (PaymentMethodsRequest) returns (PaymentMethodsResponse);
+	rpc CheckPromoAvailability (CheckPromoAvailabilityRequest) returns (CheckPromoAvailabilityResponse);
+	rpc AddPromoHistory (AddPromoHistoryRequest) returns (AddPromoHistoryResponse);
+	rpc refundToWallet (RefundToWalletRequest) returns (RefundToWalletResponse);
+}
+
+
+
+message ServiceTransactionRequest {
+	string user = 1;
+	string paymentMethodSlug = 2;
+	string paymentData = 3;
+	int32 orderId = 4;
+	double amount = 5;
+	string type = 6;
+}
+
+message ServiceTransactionResponse {
+	bool status = 1;
+	string data = 2;
+}
+
+message PaymentMethodsRequest {
+	int32 id =1;
+}
+
+message PaymentMethodsResponse {
+	bool status = 1;
+	string data = 2;
+}
+
+message CheckPromoAvailabilityRequest {
+	int32 userId =1;
+	string promoCode = 2;
+}
+
+message CheckPromoAvailabilityResponse {
+	bool status = 1;
+	string message=2;
+}
+
+message AddPromoHistoryRequest {
+	int32 userId =1;
+	string promoCode = 2;
+}
+
+message AddPromoHistoryResponse {
+	bool status = 1;
+	string message = 2;
+}
+
+message RefundToWalletRequest {
+	string data = 1;
+}
+
+message RefundToWalletResponse {
+	bool status = 1;
+	string message = 2;
+}

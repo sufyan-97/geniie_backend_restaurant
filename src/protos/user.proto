@@ -1,0 +1,67 @@
+import "google/protobuf/any.proto";
+
+syntax = "proto3";
+
+service UserService {
+	rpc GetRiders (GetRidersRequest) returns (GetRidersResponse);
+	rpc GetUsers (GetUsersRequest) returns (GetRidersResponse);
+	rpc GetUsersByType (GetUsersByTypeRequest) returns (GetUsersByTypeResponse);
+	rpc ChangeUserStatus (ChangeUserStatusRequest) returns (ChangeUserStatusResponse);
+	rpc UpdateUserRewardPoints (UpdateUserRewardPointsRequest) returns (UpdateUserRewardPointsResponse);
+	rpc verifyRestaurantRider (verifyRestaurantRiderRequest) returns (verifyRestaurantRiderResponse);
+}
+
+
+
+message GetRidersRequest {
+}
+
+message GetUsersRequest {
+	repeated int32 ids = 1;
+}
+
+message GetRidersResponse {
+	bool status = 1;
+    string data = 2;
+}
+
+message GetUsersByTypeRequest {
+	bool status = 1;
+    string data = 2;
+}
+message GetUsersByTypeResponse {
+	bool status = 1;
+    string data = 2;
+}
+
+message ChangeUserStatusRequest {
+	int32 userId = 1;
+	string userStatus = 2;
+	optional string reasonData = 3;
+}
+message ChangeUserStatusResponse {
+	bool status = 1;
+}
+
+message UpdateUserRewardPointsRequest {
+	int32 userId = 1;
+	int32 relevantId = 2;
+	string type = 3;
+	int32 points = 4;
+	string data=5;
+}
+message UpdateUserRewardPointsResponse {
+	bool status = 1;
+	string message = 2;
+}
+
+message verifyRestaurantRiderRequest {
+	int32 userId = 1;
+	int32 riderId = 2;
+}
+
+message verifyRestaurantRiderResponse {
+	bool status = 1;
+	string message = 2;
+}
+

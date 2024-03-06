@@ -1,0 +1,96 @@
+default:
+  app:
+    hostName: localhost
+    hostURL: http://localhost:3002
+    env: local
+    title: RestaurantPlugin
+    port: 3002
+    version: 4.1
+    
+    rpcHost: localhost
+    rpcPort: 3003
+    
+    mainServiceURL: http://localhost:3000
+    mainServiceBasicAuthUsername: microservice 
+    mainServiceBasicAuthPassword: Google!@#786
+
+    timezone: Europe/London
+    timezoneOffset: +0:00
+
+  secret:
+    key: "keepItSecretWithAuth!@#"
+    expiresIn: "3h"
+    username: "web"
+    password: "google!@#1"
+
+  dashboard:
+    url:
+  
+  mysql:
+    isMySQL: true
+    host: localhost
+    port: 3306
+    name: asap_restaurant_db
+    username: root
+    password: null
+    ssl: null
+  
+  mongo:
+    isMongo: true
+    host: localhost
+    port: 27017
+    name: asap_restaurant_db
+    username: null
+    password: null
+    authSource: null
+  
+  redis:
+    host: null
+    port: null
+    prefix: null
+    username: null
+    password: null
+    KEY: null
+  
+  rpcClients:
+    - serviceName: NotificationService
+      host: localhost
+      port: 3001
+      publicKey: null
+      cert: null
+      protoFile: notification.proto
+
+    - serviceName: RecentSearhService
+      host: localhost
+      port: 3001
+      publicKey: null
+      cert: null
+      protoFile: recentSearch.proto      
+    
+    - serviceName: NotificationService
+      host: localhost
+      port: 3001
+      publicKey: null
+      cert: null
+      protoFile: notification.proto
+
+    - serviceName: UserService
+      host: localhost
+      port: 3001
+      publicKey: null
+      cert: null
+      protoFile: user.proto  
+
+    - serviceName: SocketRPC
+      host: localhost
+      port: 3001
+      publicKey: null
+      cert: null
+      protoFile: socket.proto  
+
+    - serviceName: riderRPC
+      host: localhost
+      port: 3005
+      publicKey: null
+      cert: null
+      protoFile: rider.proto   

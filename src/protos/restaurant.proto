@@ -1,0 +1,62 @@
+import "google/protobuf/any.proto";
+
+syntax = "proto3";
+
+service RestaurantService {
+	rpc register (Request) returns (Response);
+	rpc getAllRestaurant (GetAllRestaurantRequest) returns (Response);
+	rpc changeApprovedStatus (changeApprovedStatusRequest) returns (Response);
+	rpc changeRestaurantMediaExpiry (changeRestaurantMediaExpiryRequest) returns (Response);
+	rpc suspendRestaurants (suspendRestaurantsRequest) returns (suspendRestaurantsResponse);
+	rpc getRestaurantMedia (getRestaurantMediaRequest) returns (Response);
+	rpc applyPromo (applyPromoRequest) returns (applyPromoResponse);
+}
+
+message Request {
+    string data = 1;
+}
+
+message Response {
+	bool status = 1;
+    string data = 2;
+}
+
+message GetAllRestaurantRequest {
+	string type = 1;
+	repeated int32 id = 2;
+}
+
+message changeApprovedStatusRequest {
+	string status = 1;
+	int32 providerId = 2;
+	string restaurantName = 3;
+}
+
+message changeRestaurantMediaExpiryRequest {
+	bool status = 1;
+    string data = 2;
+}
+
+message suspendRestaurantsRequest {
+	int32 id = 1;
+	string role = 2;
+}
+message suspendRestaurantsResponse {
+	bool status = 1;
+}
+
+message getRestaurantMediaRequest {
+	int32 userId = 1;
+}
+
+message applyPromoRequest {
+	string promoData = 1;
+	string userData = 2;
+	string geoLocationData = 3;
+}
+
+message applyPromoResponse {
+	bool status = 1;
+    string data = 2;
+	string message = 3;
+}

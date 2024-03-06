@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+// The order service definition.
+service OrderRPC {
+	// Sends a order
+	rpc SendOrder (SendOrderRequest) returns (SendOrderResponse) {}
+	rpc ConfirmOrder (ConfirmOrderRequest) returns (confirmOrderResponse) {}
+	rpc VerifyUserOrder (GetUserOrderRequest) returns (GetUserOrderResponse) {}
+	rpc GetRestaurantOrders (GetRestaurantOrdersRequest) returns (GetRestaurantOrdersResponse) {}
+}
+
+message Order {
+	string id = 1;
+	string userId = 2;
+	int32 riderId = 3;
+	string orderId = 4;
+	string transactionId = 5;
+	string orderSummary = 6;
+	string orderStatus = 7;
+}
+
+// SendOrder
+message SendOrderRequest {
+	string id = 1;
+}
+
+
+// The response contains a message 
+message SendOrderResponse {
+	repeated Order orders = 1;
+}
+
+message ConfirmOrderRequest {
+	string id =1;
+	string type =2;
+}
+
+message confirmOrderResponse {
+	bool status = 1;
+	string data = 2;
+}
+
+message GetUserOrderRequest {
+	int32 sender =1;
+	int32 receiver =2;
+	int32 orderId =3;
+}
+
+message GetUserOrderResponse {
+	bool status = 1;
+	string message = 2;
+}
+message GetRestaurantOrdersRequest {
+	string usersFiltersData =1;
+}
+
+message GetRestaurantOrdersResponse {
+	bool status = 1;
+	string message = 2;
+	string usersOrdersData = 3;
+}

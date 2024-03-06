@@ -1,0 +1,148 @@
+syntax = "proto3";
+
+service MainService {
+	rpc GetAppControls (AppControlRequest) returns (AppControlResponse);
+	rpc CreateUser (CreateUserRequest) returns (CreateUserResponse);
+	rpc UpdateUser (UpdateRestaurantUserRequest) returns (UpdateRestaruantUserResponse);
+	rpc BroadcastBranchRegistrationNotification (CreateBranchRequest) returns (CreateBranchResponse);
+	rpc BroadcastBranchAcceptRejectNotification (ResaturantBrachAcceptRejectNotificationRequest) returns (ResaturantBrachAcceptRejectNotificationResponse);
+	rpc SendEmail (SendEmailRequest) returns (SendEmailResponse);
+	rpc SendEmailByUserId (SendEmailByUserIdRequest) returns (SendEmailByUserIdResponse);
+	rpc GetRoles (GetRolesRequest) returns (GetRolesResponse);
+	rpc AddBranchBankAccountDetails (AddBranchBankAccountDetailsRequest) returns (AddBranchBankAccountDetailsResponse);
+	rpc CreateTicket (CreateTicketRequest) returns (CreateTicketResponse);
+	rpc GetDepartments (GetDepartmentsRequest) returns (GetDepartmentsResponse);
+	rpc CreateActionHistory (CreateActionHistoryRequest) returns (CreateActionHistoryResponse);
+}
+
+//GetAppControls
+message AppControlRequest {
+}
+
+message AppControlResponse {
+	bool status = 1;
+	string data = 2;
+}
+
+//CreateUser
+message CreateUserRequest {
+	string name = 1;
+	string phoneNumber =2;
+	string email = 3;
+	string roleName = 4;
+	optional int32 parentId = 5;
+}
+
+message  CreateUserResponse {
+	bool status = 1;
+	string data = 2;
+}
+
+
+//BranchRegistration
+message CreateBranchRequest {
+	bool status = 1;
+	string data = 2;
+}
+
+message CreateBranchResponse {
+	bool status = 1;
+	string data = 2;
+}
+
+// UpdateUser
+message UpdateRestaurantUserRequest {
+	string userData = 1;
+	string restaurantName = 2;
+}
+message UpdateRestaruantUserResponse {
+	bool status = 1;
+	string data = 2;
+}
+
+
+//ResaturantBrachAcceptRejectNotification
+message ResaturantBrachAcceptRejectNotificationRequest {
+	bool status = 1;
+	string data = 2;
+}
+
+message ResaturantBrachAcceptRejectNotificationResponse {
+	bool status = 1;
+	string data = 2;
+}
+
+// Send Email
+
+message SendEmailRequest {
+	string subject = 1;
+	optional string msg = 2;
+	string to = 3;
+	string template = 4;
+	string templateData = 5;
+}
+
+message SendEmailResponse {
+	bool status = 1;
+	string data = 2;
+}
+
+message SendEmailByUserIdRequest {
+	string subject = 1;
+	optional string msg = 2;
+	int32 userId = 3;
+	string template = 4;
+	string templateData = 5;
+}
+
+message SendEmailByUserIdResponse {
+	bool status = 1;
+	string data = 2;
+}
+
+message GetRolesRequest {
+	bool status = 1;
+	string data = 2;
+}
+message GetRolesResponse {
+	bool status = 1;
+	string data = 2;
+}
+
+message AddBranchBankAccountDetailsRequest {
+	bool status = 1;
+	string data = 2;
+}
+message AddBranchBankAccountDetailsResponse {
+	bool status = 1;
+	string data = 2;
+}
+
+message CreateTicketRequest {
+	string data = 1;
+}
+message CreateTicketResponse {
+	bool status = 1;
+	string ticketId = 2;
+	string message = 3;
+}
+
+message GetDepartmentsRequest {
+	bool status = 1;
+}
+message GetDepartmentsResponse {
+	bool status = 1;
+	string message = 2;
+	string data = 3;
+}
+
+message CreateActionHistoryRequest {
+	int32 userId = 1;
+	string action = 2;
+	string actionData = 3;
+	string ticketId = 4;
+}
+message CreateActionHistoryResponse {
+	bool status = 1;
+	string message = 2;
+}

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+service PromotionService {
+	rpc getPromotionList (GetPromotionListRequest) returns (GetPromotionResponse) {};
+	rpc getPromotion (GetPromotionRequest) returns (GetPromotionResponse){};
+}
+
+message GetPromotionListRequest {
+	string data = 1;
+}
+
+message GetPromotionResponse {
+	bool status = 1;
+	string data = 2;
+}
+
+message GetPromotionRequest {
+	int32 promotionId = 1;
+}

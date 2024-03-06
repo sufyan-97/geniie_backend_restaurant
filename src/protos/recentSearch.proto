@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service RecentSearhService {
+	rpc SaveRecentSearch (SaveRecentSearchRequest) returns (SaveRecentSearchResponse);
+}
+
+message SaveRecentSearchRequest {
+	int32 userId =1;
+	string key =2;
+	string location =3;
+}
+
+message SaveRecentSearchResponse {
+	bool success =1;
+}
+
